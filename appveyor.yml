@@ -6,8 +6,8 @@ platform:
 install:
 - ps: $env:Path += ";C:\MinGW\bin"
 - ps: $env:Path += ";C:\MinGW\msys\1.0\bin"
-#- ps: git submodule init
-#- ps: git submodule update
+- ps: git submodule init
+- ps: git submodule update
 
 build_script:
 - ps: cd mongoose\examples\simplest_web_server
