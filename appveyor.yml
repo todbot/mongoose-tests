@@ -5,8 +5,16 @@ platform:
 - x64
 
 install:
-- ps: $env:Path += ";C:\MinGW\bin"
-- ps: $env:Path += ";C:\MinGW\msys\1.0\bin"
+#- ps: $env:Path += ";C:\MinGW\bin"
+#- ps: $env:Path += ";C:\MinGW\msys\1.0\bin"
+
+- ps: if ( $env:Platform -eq "x64" ) {
+       $env:Path = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;" + $env:Path
+     } else {
+       $env:Path = "C:\msys64\mingw32\bin;C:\msys64\usr\bin;" + $env:Path
+     }
+- ps: env
+
 # can't use PS for git submodule
 - git submodule update --init --recursive
 
